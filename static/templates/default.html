@@ -1,0 +1,23 @@
+[?][@on minify]
+<!DOCTYPE html>
+
+
+[#config.stx]
+<html>
+    <head>
+        <title>[^config.pageTitle] | [i title][^title][e]Untitled Page[/]</title>
+        <link rel="stylesheet" href="[^config.baseUrl]/main.css" />
+    </head>
+    <body>
+        <div id="header">
+            Header!
+        </div>
+        <div id="main">
+            [^content]
+        </div>
+        <div id="bottom">
+            Bottom!
+        </div>
+        <script src="[^config.baseUrl]/main.js"></script>
+    </body>
+</html>

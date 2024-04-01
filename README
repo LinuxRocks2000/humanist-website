@@ -16,3 +16,6 @@ entries and manage almost everything. 'D'evelopers have a few extra permissions 
 the automatic-update gremlin (a little script that shuts off the server, pulls from the production branch, rebuilds the static site, rebuilds the server, and starts it all up again), and do simple server restarts.
 
 At the moment, the server does not do intelligent rebuilds; that is, when a change is made, the whole site is regenerated. With Sitix this is fine for small sites, but will eventually be a problem.
+
+
+UPDATE: THE SERVER IS NOT RUST! We talked about it and Kotlin is the best choice.

@@ -1,1 +1,6 @@
-// empty for now (boring)
+function onscroll() {
+    
+}
+
+window.addEventListener("scroll", onscroll);
+window.addEventListener("wheel", onscroll);

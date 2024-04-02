@@ -5,18 +5,38 @@
 [#config.stx]
 <html>
     <head>
-        <title>[^config.pageTitle] | [i title][^title][e]Untitled Page[/]</title>
+        <title>[^config.pageTitle] | [i title] [^title] [e] Untitled Page [/] </title>
         <link rel="stylesheet" href="[^config.baseUrl]/main.css" />
+        <link rel="icon" href="[^config.baseUrl]/res/logo.png" />
+        <meta name="viewport" value="initial-scale: 1;" />
     </head>
     <body>
+        <div id="quoteoftheday">
+            “Humanism is about the world, not about humanism.”<span class="by">Harold Blackham</span>
+        </div>
         <div id="header">
-            Header!
+            <a href="[^config.baseUrl]"><img src="[^config.baseUrl]/res/logo.png"></a>
+            <a href="">A Link</a>
+            <a href="">Another Link</a>
+            <div class="navdropdown">
+                <span>A dropdown!</span>
+                <div class="items-outer">
+                    <div class="items">
+                        <a href="">A link inside the dropdown!</a>
+                        <a href="">Another link inside the dropdown!</a>
+                        <a href="">A third link inside the dropdown!</a>
+                    </div>
+                </div>
+            </div>
         </div>
         <div id="main">
             [^content]
         </div>
         <div id="bottom">
             Bottom!
+        </div>
+        <div id="actualbottom">
+            Site designed by Pilquetoast and <a href="https://swaous.asuscomm.com">Tyler Clarke</a> (Weird Pusheen). Built with Sitix.
         </div>
         <script src="[^config.baseUrl]/main.js"></script>
     </body>

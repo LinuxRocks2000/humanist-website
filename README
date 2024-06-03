@@ -1,9 +1,9 @@
-Systems in use at the moment are Rust (https://www.rust-lang.org ; I recommend RustUp to get it on Linux and possibly Windows), Sitix (https://swaous.asuscomm.com/sitix ; it's a CMake project),
+Systems in use at the moment are Kotlin/Ktor, Sitix (https://swaous.asuscomm.com/sitix ; it's a CMake project),
 and Sonic (https://github.com/valeriansaliou/sonic). Sonic is installable with Cargo; the configuration for it is in sonic.cfg. The storage directory is gitignored.
-Once you have Sitix working, the build-static.sh script will run Sitix on the static site (the output directory is gitignored). Run the development server of your choice on the output directory (I use node http-server;
-python3's builtin http server is good too).
+Once you have Sitix working, the build-static.sh script will run Sitix on the static site (the output directory is gitignored). Run the development server of your choice on the output directory (I use node http-server; python3's builtin http server is good too). On whatever server we use, a Sitix watchdog (sitix -w) will be used to
+hot-build the site, quickly updating any changes the 
 
-The dynamic server is a Rust project. It uses Warp to handle HTTP requests that go to the database and occasionally trigger rebuilds (it simply invokes build-static.sh). The main purpose of it is for handling commands from the
+The dynamic server is a Rust project. It uses Warp to handle HTTP requests that go to the database and writes files (that are then rendered by the Sitix watchdog). The main purpose of it is for handling commands from the
 GUI: members can submit content and admins can manage content. Content in the proposal stage is stored as regular text files in the proposals directory (gitignored; will be created by the server). This is *any* content.
 Metadata about the content is stored in CHECKLIST.TXT, which contains simple line-separated entries describing proposal type (is it an article? a quote? a message to the admins? a message to the developers?), author, optionally author
 E-Mail, UNIX time submitted, and content filename (if applicable).
@@ -14,8 +14,6 @@ User information is stored in a Linux passwd-style format in the PASSWD file (it
 the "group" of the user is controlled by the one-char permission level. '0' means they quite literally have 0 permissions - aside from commenting (todo: add commenting), they can't do anything. 'A'dmins can read most proposal
 entries and manage almost everything. 'D'evelopers have a few extra permissions over Admins - they can read the server logs, messages to developers, and diagnostic information. They can also force Sitix rebuilds, activate
 the automatic-update gremlin (a little script that shuts off the server, pulls from the production branch, rebuilds the static site, rebuilds the server, and starts it all up again), and do simple server restarts.
-
-At the moment, the server does not do intelligent rebuilds; that is, when a change is made, the whole site is regenerated. With Sitix this is fine for small sites, but will eventually be a problem.
 
 
 UPDATE: THE SERVER IS NOT RUST! We talked about it and Kotlin is the best choice.

@@ -1,0 +1,32 @@
+[?][@on minify]
+[#config.stx]
+<!DOCTYPE html>
+
+
+<html>
+    <head>
+        <title>[^config.pageTitle] | [i title] [^title] [e] Untitled Page [/] </title>
+        <link rel="stylesheet" href="[^config.baseUrl]/slideshow.css" />
+        <link rel="icon" href="[^config.baseUrl]/res/logo.png" />
+        <meta name="viewport" value="initial-scale: 1;" />
+        <meta charset="utf-8">
+    </head>
+    <body>
+        <div id="positiondicator"> <!-- animated segmented position indicator with segments corresponding to the slides-->
+            [f slides slide]
+                <span>&mdash;</span>
+            [/]
+        </div>
+        <div id="slideshow-container">
+            [f slides slide]
+                <div class="slide" style="background-image: url([^config.baseUrl]/res/[^slide.img])">
+                    <div>
+                        [^slide.content]
+                    </div>
+                </div>
+            [/]
+        </div>
+        <script src="[^config.baseUrl]/animator.js"></script>
+        <script src="[^config.baseUrl]/slideshow.js"></script>
+    </body>
+</html>
